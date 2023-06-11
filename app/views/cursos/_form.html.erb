@@ -23,7 +23,8 @@
 
   <div class="field">
     <%= form.label :nivel_dificuldade %>
-    <%= form.number_field :nivel_dificuldade %>
+    <%= form.select :nivel_dificuldade, options_for_select({"Fácil" => 1, "Intermediário" => 2, "Dificíl" => 3 }), { include_blank: 'Selecione...' }, class: 'form-control' %>
+
   </div>
 
   <div class="field">
@@ -33,12 +34,15 @@
   
   <div class="field">
     <%= form.label :preco %>
-    <%= form.number_field :preco %>
+    <%= form.text_field :preco %>
   </div>
 
   <div class="field">
-    <%= form.label :id_instrutor %>
-    <%= form.number_field :id_instrutor %>
+    <label>Area de Conhecimentos</label>
+    <% @AreaConhecimento.each do |conhecimento| %>
+      <%= check_box_tag 'conhecimentos[]', conhecimento.id, false, id: "category_#{conhecimento.id}" %>
+      <span> <%= conhecimento.descricao %></span><br>
+    <% end %>
   </div>
 
   <div class="actions">

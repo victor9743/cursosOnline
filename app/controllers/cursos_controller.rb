@@ -14,6 +14,7 @@ class CursosController < ApplicationController
   # GET /cursos/new
   def new
     @curso = Curso.new
+    @AreaConhecimento = AreaConhecimento.where(ativo: true)
   end
 
   # GET /cursos/1/edit
@@ -22,8 +23,14 @@ class CursosController < ApplicationController
 
   # POST /cursos or /cursos.json
   def create
-    # @curso = Curso.new(curso_params)
+    @curso = Curso.new(
+      titulo: curso_params["titulo"],
+      descricao: curso_params["descricao"],
+      duracao: "#{curso_params["duracao"]} Mes(es)",
+      nivel_dificuldade:  curso_params["nivel_dificuldade"]
+    ) 
 
+    puts @curso
     # respond_to do |format|
     #   if @curso.save
     #     format.html { redirect_to curso_url(@curso), notice: "Curso was successfully created." }
