@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @curso.titulo %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @curso.descricao %>
+</p>
+
+<p>
+  <strong>Nivel dificuldade:</strong>
+  <%= @curso.nivel_dificuldade %>
+</p>
+
+<p>
+  <strong>Duracao:</strong>
+  <%= @curso.duracao %>
+</p>
+
+<p>
+  <strong>Preco:</strong>
+  <%= @curso.preco %>
+</p>
+
+<p>
+  <strong>Id instrutor:</strong>
+  <%= @curso.id_instrutor %>
+</p>
+
+<%= link_to 'Edit', edit_curso_path(@curso) %> |
+<%= link_to 'Back', cursos_path %>

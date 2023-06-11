@@ -1,0 +1,27 @@
+<%= form_with(model: area_conhecimento) do |form| %>
+  <% if area_conhecimento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(area_conhecimento.errors.count, "error") %> prohibited this area_conhecimento from being saved:</h2>
+
+      <ul>
+        <% area_conhecimento.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_field :descricao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ativo %>
+    <%= form.check_box :ativo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

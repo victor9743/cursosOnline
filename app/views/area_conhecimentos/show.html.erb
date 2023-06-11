@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @area_conhecimento.descricao %>
+</p>
+
+<p>
+  <strong>Ativo:</strong>
+  <%= @area_conhecimento.ativo %>
+</p>
+
+<%= link_to 'Edit', edit_area_conhecimento_path(@area_conhecimento) %> |
+<%= link_to 'Back', area_conhecimentos_path %>

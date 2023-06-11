@@ -1,0 +1,37 @@
+<%= form_with(model: compra_curso) do |form| %>
+  <% if compra_curso.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(compra_curso.errors.count, "error") %> prohibited this compra_curso from being saved:</h2>
+
+      <ul>
+        <% compra_curso.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_field :descricao %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cod_barras %>
+    <%= form.text_area :cod_barras %>
+  </div>
+
+  <div class="field">
+    <%= form.label :valor %>
+    <%= form.number_field :valor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aprovado %>
+    <%= form.check_box :aprovado %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

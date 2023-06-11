@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @compra_curso.descricao %>
+</p>
+
+<p>
+  <strong>Cod barras:</strong>
+  <%= @compra_curso.cod_barras %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @compra_curso.valor %>
+</p>
+
+<p>
+  <strong>Aprovado:</strong>
+  <%= @compra_curso.aprovado %>
+</p>
+
+<%= link_to 'Edit', edit_compra_curso_path(@compra_curso) %> |
+<%= link_to 'Back', compra_cursos_path %>

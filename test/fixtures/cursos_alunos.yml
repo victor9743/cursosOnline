@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_aluno: 1
+  id_curso: 1
+  id_pagamento: 1
+  curso_concluido: false
+
+two:
+  id_aluno: 1
+  id_curso: 1
+  id_pagamento: 1
+  curso_concluido: false

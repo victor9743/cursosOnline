@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Compra Cursos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descricao</th>
+      <th>Cod barras</th>
+      <th>Valor</th>
+      <th>Aprovado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @compra_cursos.each do |compra_curso| %>
+      <tr>
+        <td><%= compra_curso.descricao %></td>
+        <td><%= compra_curso.cod_barras %></td>
+        <td><%= compra_curso.valor %></td>
+        <td><%= compra_curso.aprovado %></td>
+        <td><%= link_to 'Show', compra_curso %></td>
+        <td><%= link_to 'Edit', edit_compra_curso_path(compra_curso) %></td>
+        <td><%= link_to 'Destroy', compra_curso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Compra Curso', new_compra_curso_path %>

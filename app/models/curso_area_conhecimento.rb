@@ -1,0 +1,2 @@
+class CursoAreaConhecimento < ApplicationRecord
+end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Area Conhecimentos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descricao</th>
+      <th>Ativo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @area_conhecimentos.each do |area_conhecimento| %>
+      <tr>
+        <td><%= area_conhecimento.descricao %></td>
+        <td><%= area_conhecimento.ativo %></td>
+        <td><%= link_to 'Show', area_conhecimento %></td>
+        <td><%= link_to 'Edit', edit_area_conhecimento_path(area_conhecimento) %></td>
+        <td><%= link_to 'Destroy', area_conhecimento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Area Conhecimento', new_area_conhecimento_path %>
