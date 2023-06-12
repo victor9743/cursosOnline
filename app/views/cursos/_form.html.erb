@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :nivel_dificuldade %>
-    <%= form.select :nivel_dificuldade, options_for_select({"Fácil" => 1, "Intermediário" => 2, "Dificíl" => 3 }), { include_blank: 'Selecione...' }, class: 'form-control' %>
+    <%= form.select :nivel_dificuldade, options_for_select({"Fácil" => 1, "Intermediário" => 2, "Dificíl" => 3 }, selected: @curso.nivel_dificuldade), { include_blank: 'Selecione...' }, class: 'form-control' %>
 
   </div>
 
@@ -40,7 +40,7 @@
   <div class="field">
     <label>Area de Conhecimentos</label>
     <% @AreaConhecimento.each do |conhecimento| %>
-      <%= check_box_tag 'conhecimentos[]', conhecimento.id, false, id: "category_#{conhecimento.id}" %>
+      <%= check_box_tag 'conhecimentos[]', conhecimento.id, @arrayConhecimentos.find {|num| num == conhecimento.id }.nil? ? false : true, id: "category_#{conhecimento.id}" %>
       <span> <%= conhecimento.descricao %></span><br>
     <% end %>
   </div>

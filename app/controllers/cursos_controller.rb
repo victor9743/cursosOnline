@@ -27,19 +27,28 @@ class CursosController < ApplicationController
       titulo: curso_params["titulo"],
       descricao: curso_params["descricao"],
       duracao: "#{curso_params["duracao"]} Mes(es)",
-      nivel_dificuldade:  curso_params["nivel_dificuldade"]
-    ) 
+      preco: curso_params["preco"],
+      nivel_dificuldade:  curso_params["nivel_dificuldade"],
+      id_instrutor:  current_instrutor.id
+    )
 
-    puts @curso
-    # respond_to do |format|
-    #   if @curso.save
-    #     format.html { redirect_to curso_url(@curso), notice: "Curso was successfully created." }
-    #     format.json { render :show, status: :created, location: @curso }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #     format.json { render json: @curso.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @curso.save
+        if !params["conhecimentos"].nil?
+          params["conhecimentos"].each do |conhecimento|
+            CursoAreaConhecimento.create!(
+              id_curso: @curso.id,
+              id_area_conhecimento: conhecimento
+            )
+          end
+        end
+        format.html { redirect_to instrutores_dashboard_index_path, notice: "Curso was successfully created." }
+        format.json { render :show, status: :created, location: @curso }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @curso.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /cursos/1 or /cursos/1.json
@@ -60,7 +69,7 @@ class CursosController < ApplicationController
     @curso.destroy
 
     respond_to do |format|
-      format.html { redirect_to cursos_url, notice: "Curso was successfully destroyed." }
+      format.html { redirect_to instrutores_dashboard_index_url, notice: "Curso was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -69,6 +78,13 @@ class CursosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_curso
       @curso = Curso.find(params[:id])
+      @AreaConhecimento = AreaConhecimento.where(ativo: true)
+      @cursoAreaConhecimento = CursoAreaConhecimento.where(id_curso: @curso.id)
+      @arrayConhecimentos = []
+
+      @cursoAreaConhecimento.each do |conhecimento|
+        @arrayConhecimentos.push(conhecimento.id_area_conhecimento)
+      end
     end
 
     # Only allow a list of trusted parameters through.
