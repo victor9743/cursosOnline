@@ -1,2 +1,19 @@
 <h1>AlunosDashboard#index</h1>
 <p>Find me in app/views/alunos_dashboard/index.html.erb</p>
+<table>
+    <thead>
+        <th>Descricao</th>
+        <th>Detalhes</th>
+    </thead>
+    <tbody>
+        <% if @cursoAluno.nil? %>
+            <tr>
+                <td> Nenhum Curso Adquirido </td>
+            <tr>
+        <% else %>
+            <tr>
+                
+            </tr>
+        <% end %>
+    <tbody>
+</table>

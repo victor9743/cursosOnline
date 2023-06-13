@@ -12,7 +12,14 @@
 
 <p>
   <strong>Nivel dificuldade:</strong>
-  <%= @curso.nivel_dificuldade %>
+  <% case @curso.nivel_dificuldade %>
+  <% when 1 %>
+    <%= "Fácil" %>
+  <% when 2 %>
+    <%= "Intermediário" %>
+  <% when 3 %>
+    <%= "Difícil" %>
+  <% end %>
 </p>
 
 <p>
@@ -25,10 +32,12 @@
   <%= @curso.preco %>
 </p>
 
-<p>
-  <strong>Id instrutor:</strong>
-  <%= @curso.id_instrutor %>
-</p>
-
+ <div class="field">
+    <label>Area de Conhecimentos</label>
+    <% @AreaConhecimento.each do |conhecimento| %>
+      <%= check_box_tag 'conhecimentos[]', conhecimento.id, @arrayConhecimentos.find {|num| num == conhecimento.id }.nil? ? false : true, id: "category_#{conhecimento.id}", disabled: true %>
+      <span> <%= conhecimento.descricao %></span><br>
+    <% end %>
+  </div>
 <%= link_to 'Edit', edit_curso_path(@curso) %> |
 <%= link_to 'Back', cursos_path %>

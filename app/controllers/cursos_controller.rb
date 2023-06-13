@@ -26,7 +26,7 @@ class CursosController < ApplicationController
     @curso = Curso.new(
       titulo: curso_params["titulo"],
       descricao: curso_params["descricao"],
-      duracao: "#{curso_params["duracao"]} Mes(es)",
+      duracao: curso_params["duracao"],
       preco: curso_params["preco"],
       nivel_dificuldade:  curso_params["nivel_dificuldade"],
       id_instrutor:  current_instrutor.id
@@ -53,8 +53,26 @@ class CursosController < ApplicationController
 
   # PATCH/PUT /cursos/1 or /cursos/1.json
   def update
+    CursoAreaConhecimento.where(id_curso: @curso.id).destroy_all
     respond_to do |format|
-      if @curso.update(curso_params)
+      if @curso.update(
+          titulo: curso_params["titulo"],
+          descricao: curso_params["descricao"],
+          duracao: curso_params["duracao"],
+          preco: curso_params["preco"],
+          nivel_dificuldade:  curso_params["nivel_dificuldade"],
+          id_instrutor:  current_instrutor.id
+        )
+
+        if !params["conhecimentos"].nil?
+          params["conhecimentos"].each do |conhecimento|
+            CursoAreaConhecimento.create!(
+              id_curso: @curso.id,
+              id_area_conhecimento: conhecimento
+            )
+          end
+        end
+
         format.html { redirect_to curso_url(@curso), notice: "Curso was successfully updated." }
         format.json { render :show, status: :ok, location: @curso }
       else
@@ -67,7 +85,7 @@ class CursosController < ApplicationController
   # DELETE /cursos/1 or /cursos/1.json
   def destroy
     @curso.destroy
-
+    CursoAreaConhecimento.where(id_curso: @curso.id).destroy_all
     respond_to do |format|
       format.html { redirect_to instrutores_dashboard_index_url, notice: "Curso was successfully destroyed." }
       format.json { head :no_content }
