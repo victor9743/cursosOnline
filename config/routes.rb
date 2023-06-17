@@ -17,5 +17,13 @@ Rails.application.routes.draw do
   get 'alunos_dashboard/index'
 
 
+  # admins
+  get '/cadastrar_aluno', to: 'admins_dashboard#new_aluno'
+  get '/cadastrar_instrutor', to: 'admins_dashboard#new_instrutor'
+  get '/cadastrar_admin', to: 'admins_dashboard#new_admin'
+  post '/confirmar_pagamento', to: 'admins_dashboard#confirmar_pagamento'
+
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

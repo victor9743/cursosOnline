@@ -1,5 +1,6 @@
 class CursoPagamentosController < ApplicationController
-  before_action :set_curso_pagamento, only: %i[ show edit update destroy ]
+  before_action :authenticate_admin!
+  before_action :set_curso_pagamento, only: %i[ show update destroy ]
 
   # GET /curso_pagamentos or /curso_pagamentos.json
   def index
@@ -13,10 +14,6 @@ class CursoPagamentosController < ApplicationController
   # GET /curso_pagamentos/new
   def new
     @curso_pagamento = CursoPagamento.new
-  end
-
-  # GET /curso_pagamentos/1/edit
-  def edit
   end
 
   # POST /curso_pagamentos or /curso_pagamentos.json

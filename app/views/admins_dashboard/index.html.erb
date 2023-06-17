@@ -1,2 +1,58 @@
+<p id="notice">
+    <%= notice %>
+    <% if flash.now[:error] %>
+        <%= flash.now[:error]%>
+    <% end %>
+</p>
 <h1>AdminsDashboard#index</h1>
-<p>Find me in app/views/admins_dashboard/index.html.erb</p>
+<h5>Lista de usuarios - alunos</h5>
+<table>
+    <thead>
+        <th>nome</th>
+        <th>Opcoes</th>
+    </thead>
+    <tbody>
+        <% @alunos.each do |aluno| %>
+            <tr>
+                <td><%= aluno.email %></td>
+                <td>Opcoes</td>
+            </tr>
+        <% end %>
+    <tbody>
+</table>
+<a href="/cadastrar_aluno">Cadastrar aluno</a>
+
+<h5>Lista usuarios - instrutores</h5>
+<table>
+    <thead>
+        <th>nome</th>
+    </thead>
+    <tbody>
+        <% @instrutores.each do |instrutor| %>
+            <tr>
+                <td><%= instrutor.email %></td>
+                <td>Opcoes</td>
+            </tr>
+        <% end %>
+    <tbody>
+</table>
+<a href="/cadastrar_instrutor">Cadastrar instrutor</a>
+
+<h5>Lista usuarios - admins</h5>
+<table>
+    <thead>
+        <th>nome</th>
+    </thead>
+    <tbody>
+        <% @admins.each do |instrutor| %>
+            <tr>
+                <td><%= instrutor.email %></td>
+                <td>Opcoes</td>
+            </tr>
+        <% end %>
+    <tbody>
+</table>
+<a href="/cadastrar_admin">Cadastrar admin</a>
+<br>
+<a href="/curso_pagamentos"> Pagamentos</a>
+

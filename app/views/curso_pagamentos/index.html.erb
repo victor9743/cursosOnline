@@ -19,15 +19,18 @@
         <td><%= curso_pagamento.descricao %></td>
         <td><%= curso_pagamento.cod_barras %></td>
         <td><%= curso_pagamento.valor %></td>
-        <td><%= curso_pagamento.aprovado %></td>
-        <td><%= link_to 'Show', curso_pagamento %></td>
-        <td><%= link_to 'Edit', edit_curso_pagamento_path(curso_pagamento) %></td>
-        <td><%= link_to 'Destroy', curso_pagamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= curso_pago(curso_pagamento.aprovado) %></td>
+        <td>
+        <form action="/confirmar_pagamento" method="POST">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <input type="hidden" name="curso" value="<%= curso_pagamento.id %>">
+            <button> Confirmar Pagamento</button>
+          </form>
+        | 
+        <%= link_to 'Show', curso_pagamento %> 
+        | 
+        <%= link_to 'Destroy', curso_pagamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Curso Pagamento', new_curso_pagamento_path %>

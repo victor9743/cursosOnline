@@ -30,4 +30,15 @@ module MainHelper
         end
     end
     # fim dashboard aluno
+
+    # inicio dashboard admin
+    def curso_pago(pagamento)
+        if pagamento == 0
+            return "Pagamento nao aprovado"
+        elsif pagamento == 1
+            return "aprovado"
+        end
+    end
+    # fim dashboard admin
+
 end
