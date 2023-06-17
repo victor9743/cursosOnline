@@ -40,7 +40,11 @@
   <div class="field">
     <label>Area de Conhecimentos</label>
     <% @AreaConhecimento.each do |conhecimento| %>
-      <%= check_box_tag 'conhecimentos[]', conhecimento.id, @arrayConhecimentos.find {|num| num == conhecimento.id }.nil? ? false : true, id: "category_#{conhecimento.id}" %>
+      <%= check_box_tag 'conhecimentos[]', conhecimento.id,
+        if !@arrayConhecimentos.nil?
+          @arrayConhecimentos.find {|num| num == conhecimento.id }.nil? ? false : true
+        end, 
+        id: "category_#{conhecimento.id}" %>
       <span> <%= conhecimento.descricao %></span><br>
     <% end %>
   </div>

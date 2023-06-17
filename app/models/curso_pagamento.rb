@@ -1,0 +1,2 @@
+class CursoPagamento < ApplicationRecord
+end

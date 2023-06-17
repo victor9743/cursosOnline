@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @curso_pagamento.descricao %>
+</p>
+
+<p>
+  <strong>Cod barras:</strong>
+  <%= @curso_pagamento.cod_barras %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @curso_pagamento.valor %>
+</p>
+
+<p>
+  <strong>Aprovado:</strong>
+  <%= @curso_pagamento.aprovado %>
+</p>
+
+<%= link_to 'Edit', edit_curso_pagamento_path(@curso_pagamento) %> |
+<%= link_to 'Back', curso_pagamentos_path %>

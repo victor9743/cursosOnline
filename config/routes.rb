@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :curso_pagamentos
   devise_for :admins
   devise_for :instrutors
   devise_for :alunos
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   root to: 'main#index' 
   get 'admins_dashboard/index'
   get 'instrutores_dashboard/index'
+  post '/comprar_curso', to: 'alunos_dashboard#comprar_curso'
   get 'alunos_dashboard/index'
 
 

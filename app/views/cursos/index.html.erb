@@ -19,8 +19,16 @@
       <tr>
         <td><%= curso.titulo %></td>
         <td><%= curso.descricao %></td>
-        <td><%= curso.nivel_dificuldade %></td>
-        <td><%= curso.duracao %></td>
+        <td>
+          <% if curso.nivel_dificuldade == 1 %>
+            Fácil
+          <% elsif curso.nivel_dificuldade == 2 %>
+            Intermediário
+          <% elsif curso.nivel_dificuldade == 3 %>
+            Difícil
+          <% end %>
+        </td>
+        <td><%= curso.duracao %> Mês(ses)</td>
         <td><%= curso.preco %></td>
         <td><%= link_to 'Show', curso %></td>
         <td><%= link_to 'Edit', edit_curso_path(curso) %></td>

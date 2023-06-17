@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  descricao: MyString
+  cod_barras: MyString
+  valor: 1
+  aprovado: 1
+
+two:
+  descricao: MyString
+  cod_barras: MyString
+  valor: 1
+  aprovado: 1

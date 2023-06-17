@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_10_222217) do
+ActiveRecord::Schema.define(version: 2023_06_17_142028) do
 
   create_table "admins", charset: "utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2023_06_10_222217) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "curso_pagamentos", charset: "utf8mb3", force: :cascade do |t|
+    t.string "descricao"
+    t.string "cod_barras"
+    t.integer "valor"
+    t.integer "aprovado"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "cursos", charset: "utf8mb3", force: :cascade do |t|
     t.string "titulo"
     t.string "descricao"
@@ -94,6 +103,12 @@ ActiveRecord::Schema.define(version: 2023_06_10_222217) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_instrutors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_instrutors_on_reset_password_token", unique: true
+  end
+
+  create_table "logs", charset: "utf8mb3", force: :cascade do |t|
+    t.string "descricao"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

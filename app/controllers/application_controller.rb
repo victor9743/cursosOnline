@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
         if resource.is_a?(Aluno)
             alunos_dashboard_index_path(resource)
         elsif resource.is_a?(Admin)
-            admins_dashboard_path(Admin)
+            admins_dashboard_index_path(Admin)
         elsif resource.is_a?(Instrutor)
             instrutores_dashboard_index_path(Instrutor)
         else
@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
       
 
     protected
+
+    def logInfo(mensagem)
+        Log.create!(
+            descricao: mensagem
+        )
+    end
 
     def configure_permitted_parameters_instrutor
         devise_parameter_sanitizer.permit(:sign_up, keys: [:nome, :nome_completo, :biografia])
